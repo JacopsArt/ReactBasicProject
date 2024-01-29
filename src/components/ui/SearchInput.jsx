@@ -10,10 +10,21 @@ export const SearchInput = ({ onSearch }) => {
   };
 
   return (
-    <Input size='md' w='300px' mt='4rem'
+    <Input
+      size='lg'
+      w='300px'
+      mt='4rem'
+      mb="6rem"
+      variant="filled"
+      color="white"
+      focusBorderColor="black"
+      focusColor="black"
+      bg="red.200" 
       placeholder="Search recipe"
       value={searchTerm}
       onChange={handleChange}
     />
   );
+  
+  
 };
