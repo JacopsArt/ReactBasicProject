@@ -1,5 +1,3 @@
-// RecipeCard.jsx
-import React from "react";
 import { Card, Image, CardBody, Stack, Heading, Text, Flex } from "@chakra-ui/react";
 import { Tag } from "./RecipeListPage.jsx";
 

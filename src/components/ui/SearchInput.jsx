@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Input } from '@chakra-ui/react';
 
 export const SearchInput = ({ onSearch }) => {
@@ -10,7 +10,7 @@ export const SearchInput = ({ onSearch }) => {
   };
 
   return (
-    <Input
+    <Input size='md' w='300px' mt='4rem'
       placeholder="Search by name"
       value={searchTerm}
       onChange={handleChange}

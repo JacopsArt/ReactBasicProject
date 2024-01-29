@@ -1,5 +1,5 @@
 // RecipeListPage.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import { Center, Heading, Box, Flex } from "@chakra-ui/react";
 import { data } from "../utils/data";
 import { SearchInput } from "../components/ui/SearchInput";
