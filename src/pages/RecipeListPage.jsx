@@ -17,8 +17,8 @@ export const RecipeListPage = ({ onRecipeClick }) => {
   };
 
   return (
-    <Center  w="100vw" flexDir="column" p="0 4rem">
-      <Heading>Aroma's Recipe App</Heading>
+    <Center  w="100vw" flexDir="column" p="0 4rem" m="2rem 0">
+<Heading>Aroma&apos;s Recipe App</Heading>
 
       <SearchInput onSearch={handleSearch} />
 

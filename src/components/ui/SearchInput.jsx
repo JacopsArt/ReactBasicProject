@@ -11,7 +11,7 @@ export const SearchInput = ({ onSearch }) => {
 
   return (
     <Input size='md' w='300px' mt='4rem'
-      placeholder="Search by name"
+      placeholder="Search recipe"
       value={searchTerm}
       onChange={handleChange}
     />

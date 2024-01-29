@@ -15,7 +15,7 @@ export const App = () => {
   };
 
   return (
-    <Center h="100%" overflowY="auto" >
+    <Center h="100%" overflowY="auto" bgColor="#ebe8e8">
       {selectedRecipe ? (
         <RecipePage recipe={selectedRecipe} onBackButtonClick={handleBackButtonClick} />
       ) : (
