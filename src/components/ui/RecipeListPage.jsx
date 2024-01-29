@@ -4,10 +4,9 @@ export const Tag = ({ children, ...props }) => {
   return (
     <CTag
       p={2}
-      size="sm"
+      // size="sm"
       variant="solid"
-      bgColor="blue.300"
-      color="white"
+      color="black"
       {...props}
     >
       {children}

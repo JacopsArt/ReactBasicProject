@@ -17,12 +17,12 @@ export const RecipeListPage = ({ onRecipeClick }) => {
   };
 
   return (
-    <Center h="100vh" w="100vw" flexDir="column">
-      <Heading>Your Recipe App</Heading>
+    <Center  w="100vw" flexDir="column" p="0 4rem">
+      <Heading>Aroma's Recipe App</Heading>
 
       <SearchInput onSearch={handleSearch} />
 
-      <Flex mt={4} p={2} h="60vh" flexWrap="wrap" justify="space-between">
+      <Flex flexWrap="wrap" justify="space-between">
         {filteredData.map((hit) => (
           <Box
             key={hit.recipe.label}
@@ -30,7 +30,6 @@ export const RecipeListPage = ({ onRecipeClick }) => {
             mb={4}
             overflow="hidden"
           >
-            {/* Gebruik RecipeCard-component voor elke kaart */}
             <RecipeCard recipe={hit.recipe} />
           </Box>
         ))}

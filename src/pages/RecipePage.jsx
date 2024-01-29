@@ -8,20 +8,16 @@ import {
   HStack,
   Text,
   Tag,
+  Center,
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 
 const RecipePage = ({ recipe, onBackButtonClick }) => {
   return (
-    <Flex flexDirection="column" align="center" height="100vh">
-      <Box width="60%" height="100%">
-        <Flex
-          backgroundColor="red.300"
-          justify="space-between"
-          align="center"
-          p="2rem 0 "
-        >
-          <Button
+    <Center flexDirection="column" align="left">
+      <Box width="60vw"   m="2rem 0" boxShadow='dark-lg'  rounded='md' bg='white'>
+        <Flex justify="space-between" align="center" p="2rem 0 ">
+          <Button m="0 1rem"
             onClick={onBackButtonClick}
             leftIcon={<ArrowBackIcon />}
             variant="outline"
@@ -36,19 +32,35 @@ const RecipePage = ({ recipe, onBackButtonClick }) => {
             alt={recipe.label}
             objectFit="cover"
             w="100%"
-            h="250px"
+            h="300px"
+           
           />
         </Box>
 
-        {/* Main content */}
-        <Flex className="leftColumn" flexDirection="row" color="white">
-          <Box flex="1" bg="green.500">
-            <Text>{recipe.mealType}</Text>
+        <Flex
+          className="leftColumn"
+          flexDirection="row"
+          color="black"
+          padding="2rem"
+          
+        >
+          <Box flex="2">
+            <Heading
+              as="h4"
+              size="md"
+              color="grey"
+              style={{ textTransform: "uppercase" }}
+            >
+              {recipe.mealType}
+            </Heading>
             <Heading>{recipe.label}</Heading>
-            <Text>{recipe.dishType}</Text>
-            <Text>Total Cooking Time: {recipe.totalTime} min</Text>
-            <Text>Servings: {recipe.servings}</Text>
-            <Heading as="h4" size="md">
+            <Text style={{ textTransform: "uppercase" }} fontWeight="500">
+              {recipe.dishType || "N/A"}
+            </Text>
+
+            <Text mt="1rem">Total Cooking Time: {recipe.totalTime} min</Text>
+            <Text>Servings: {recipe.yield || "N/A"}</Text>
+            <Heading as="h4" size="md" mt="1rem">
               Ingredients:
             </Heading>
             <VStack align="flex-start" spacing={1}>
@@ -57,15 +69,17 @@ const RecipePage = ({ recipe, onBackButtonClick }) => {
               ))}
             </VStack>
           </Box>
-          <Box className="rightColumn" flex="1" bg="tomato">
+          <Box className="rightColumn" flex="1">
             <Box className="healthLabels">
-              <Text>Health labels</Text>
-              <HStack wrap="wrap">
+              <Heading as="h4" size="md" fontWeight="400">
+                Health labels
+              </Heading>
+              <HStack mt="1rem" wrap="wrap">
                 {recipe.healthLabels.map((label) => (
                   <Tag
                     key={label}
-                    bgColor="purple.200"
-                    color="white"
+                    bgColor="green.200"
+                    color="black"
                     fontSize="lg"
                     mt={1}
                   >
@@ -75,29 +89,35 @@ const RecipePage = ({ recipe, onBackButtonClick }) => {
               </HStack>
             </Box>
             <Box className="dietLabels">
-              <Text>Diet:</Text>
-              <HStack wrap="wrap">
-                {recipe.dietLabels.map((label) => (
-                  <Tag
-                    key={label}
-                    bgColor="green.200"
-                    color="white"
-                    fontSize="lg"
-                    mt={1}
-                  >
-                    {label}
-                  </Tag>
-                ))}
+              <Heading as="h4" size="md" fontWeight="400" mt="2rem">
+                Diet:
+              </Heading>
+              <HStack wrap="wrap" mt="1rem">
+                {recipe.dietLabels && recipe.dietLabels.length > 0 ? (
+                  recipe.dietLabels.map((label) => (
+                    <Tag
+                      key={label}
+                      bgColor="blue.200"
+                      fontSize="lg"
+                      mt={1}
+                    >
+                      {label}
+                    </Tag>
+                  ))
+                ) : (
+                  <Text>N/A</Text>
+                )}
               </HStack>
             </Box>
             <Box className="cautions">
-              <Text>Cautions:</Text>
-              <HStack wrap="wrap">
+              <Heading as="h4" size="md" fontWeight="400" mt="2rem">
+                Cautions:
+              </Heading>
+              <HStack wrap="wrap" mt="1rem">
                 {recipe.cautions.map((caution) => (
                   <Tag
                     key={caution}
-                    bgColor="red.200"
-                    color="white"
+                    bgColor="red.300"
                     fontSize="lg"
                     mt={1}
                   >
@@ -107,56 +127,34 @@ const RecipePage = ({ recipe, onBackButtonClick }) => {
               </HStack>
             </Box>
             <Box className="totalNutrients">
-              <Text>Total Nutrients:</Text>
-              <HStack align="flex-start" spacing={8}>
-                <Flex direction="column">
-                  <Text>
-                    {Math.round(recipe.totalNutrients?.ENERC_KCAL?.quantity)}{" "}
-                    {recipe.totalNutrients?.ENERC_KCAL?.unit}
-                  </Text>
-                  <Text>Energy</Text>
-                </Flex>
-                <Flex direction="column">
-                  <Text>
-                    {Math.round(recipe.totalNutrients?.PROCNT?.quantity)}{" "}
-                    {recipe.totalNutrients?.PROCNT?.unit}
-                  </Text>
-                  <Text>Protein</Text>
-                </Flex>
-                <Flex direction="column">
-                  <Text>
-                    {Math.round(recipe.totalNutrients?.FAT?.quantity)}{" "}
-                    {recipe.totalNutrients?.FAT?.unit}
-                  </Text>
-                  <Text>Fat</Text>
-                </Flex>
-                <Flex direction="column">
-                  <Text>
-                    {Math.round(recipe.totalNutrients?.CHOCDF?.quantity)}{" "}
-                    {recipe.totalNutrients?.CHOCDF?.unit}
-                  </Text>
-                  <Text>Carbs</Text>
-                </Flex>
-                <Flex direction="column">
-                  <Text>
-                    {Math.round(recipe.totalNutrients?.CHOLE?.quantity)}{" "}
-                    {recipe.totalNutrients?.CHOLE?.unit}
-                  </Text>
-                  <Text>Cholesterol</Text>
-                </Flex>
-                <Flex direction="column">
-                  <Text>
-                    {Math.round(recipe.totalNutrients?.NA?.quantity)}{" "}
-                    {recipe.totalNutrients?.NA?.unit}
-                  </Text>
-                  <Text>Sodium</Text>
-                </Flex>
-              </HStack>
+              <Heading as="h4" size="md" fontWeight="400" mt="2rem">
+                Total Nutrients:
+              </Heading>
+              <Flex wrap="wrap" mr="1rem">
+                {[
+                  { key: "ENERC_KCAL", label: "Energy" },
+                  { key: "PROCNT", label: "Protein" },
+                  { key: "FAT", label: "Fat" },
+                  { key: "CHOCDF", label: "Carbs" },
+                  { key: "CHOLE", label: "Cholesterol" },
+                  { key: "NA", label: "Sodium" },
+                ].map((nutrient) => (
+                  <Flex key={nutrient.key} direction="column" p="1rem">
+                    <Text>
+                      {Math.round(
+                        recipe.totalNutrients?.[nutrient.key]?.quantity
+                      )}{" "}
+                      {recipe.totalNutrients?.[nutrient.key]?.unit}
+                    </Text>
+                    <Text>{nutrient.label}</Text>
+                  </Flex>
+                ))}
+              </Flex>
             </Box>
           </Box>
         </Flex>
       </Box>
-    </Flex>
+    </Center>
   );
 };
 
