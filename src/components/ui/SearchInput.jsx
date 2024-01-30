@@ -16,7 +16,7 @@ export const SearchInput = ({ onSearch }) => {
       mt='4rem'
       mb="6rem"
       variant="filled"
-      color="white"
+      color="black"
       focusBorderColor="black"
       focusColor="black"
       bg="red.200" 

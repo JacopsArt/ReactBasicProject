@@ -14,13 +14,15 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 
 const RecipePage = ({ recipe, onBackButtonClick }) => {
   return (
-    <Center flexDirection="column" align="left" >
-      <Box width="60vw"   m="200px 0" boxShadow='dark-lg'  rounded='md'>
-        <Flex justify="space-between" align="center" p="2rem 0 ">
-          <Button m="0 1rem"
+    <Center flexDirection="column" align="left">
+      <Box width="60vw" m="2rem 0" boxShadow="dark-lg" rounded="md">
+        <Flex justify="space-between" align="center" p="2rem 0">
+          <Button
+            m="0 1rem"
             onClick={onBackButtonClick}
             leftIcon={<ArrowBackIcon />}
             variant="outline"
+            border="solid 1px black"
           >
             Back
           </Button>
@@ -33,18 +35,16 @@ const RecipePage = ({ recipe, onBackButtonClick }) => {
             objectFit="cover"
             w="100%"
             h="300px"
-           
           />
         </Box>
 
         <Flex
           className="leftColumn"
-          flexDirection="row"
+          flexDirection={{ base: "column", md: "row" }}
           color="black"
           padding="2rem"
-          
         >
-          <Box flex="2">
+          <Box flex={{ base: "none", md: "2" }}>
             <Heading
               as="h4"
               size="md"
@@ -57,7 +57,6 @@ const RecipePage = ({ recipe, onBackButtonClick }) => {
             <Text style={{ textTransform: "uppercase" }} fontWeight="500">
               {recipe.dishType || "N/A"}
             </Text>
-
             <Text mt="1rem">Total Cooking Time: {recipe.totalTime} min</Text>
             <Text>Servings: {recipe.yield || "N/A"}</Text>
             <Heading as="h4" size="md" mt="1rem">
@@ -69,7 +68,11 @@ const RecipePage = ({ recipe, onBackButtonClick }) => {
               ))}
             </VStack>
           </Box>
-          <Box className="rightColumn" flex="1">
+          <Box
+            className="rightColumn"
+            flex={{ base: "none", md: "1" }}
+            mt={{ base: "2rem", md: "0" }}
+          >
             <Box className="healthLabels">
               <Heading as="h4" size="md" fontWeight="400">
                 Health labels
@@ -95,12 +98,7 @@ const RecipePage = ({ recipe, onBackButtonClick }) => {
               <HStack wrap="wrap" mt="1rem">
                 {recipe.dietLabels && recipe.dietLabels.length > 0 ? (
                   recipe.dietLabels.map((label) => (
-                    <Tag
-                      key={label}
-                      bgColor="blue.200"
-                      fontSize="lg"
-                      mt={1}
-                    >
+                    <Tag key={label} bgColor="blue.200" fontSize="lg" mt={1}>
                       {label}
                     </Tag>
                   ))
@@ -115,12 +113,7 @@ const RecipePage = ({ recipe, onBackButtonClick }) => {
               </Heading>
               <HStack wrap="wrap" mt="1rem">
                 {recipe.cautions.map((caution) => (
-                  <Tag
-                    key={caution}
-                    bgColor="red.300"
-                    fontSize="lg"
-                    mt={1}
-                  >
+                  <Tag key={caution} bgColor="red.300" fontSize="lg" mt={1}>
                     {caution}
                   </Tag>
                 ))}
