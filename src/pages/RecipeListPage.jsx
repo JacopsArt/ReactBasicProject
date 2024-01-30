@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Center, Heading, Box, Flex } from "@chakra-ui/react";
 import { data } from "../utils/data";
 import { SearchInput } from "../components/ui/SearchInput";
-import { RecipeCard } from "../components/ui/RecipeCard"; // Importeer RecipeCard
+import { RecipeCard } from "../components/ui/RecipeCard"; 
 
 export const RecipeListPage = ({ onRecipeClick }) => {
   const [filteredData, setFilteredData] = useState(data.hits);

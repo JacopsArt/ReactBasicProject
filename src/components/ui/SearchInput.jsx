@@ -8,7 +8,6 @@ export const SearchInput = ({ onSearch }) => {
     const value = event.target.value;
     setSearchTerm(value);
 
-    // Controleer of de zoekterm een van de filtertermen bevat
     const filterTerms = ["vegan", "vegetarian", "pescetarian"];
     const filterTerm = filterTerms.find((term) =>
       value.toLowerCase().includes(term)
