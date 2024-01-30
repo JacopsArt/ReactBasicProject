@@ -3,7 +3,7 @@ import { Card, Image, CardBody, Stack, Heading, Flex, Text, HStack, Tag } from "
 export const RecipeCard = ({ recipe }) => {
   return (
     <Card
-      m={{ base: "2rem", md: "4rem 1rem" }}
+      m={{ base: "2rem", md: "3rem 1rem" }}
       borderRadius="xl"
       w={{ base: "100%", md: "sm" }}
       overflow="hidden"

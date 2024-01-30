@@ -15,7 +15,13 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 const RecipePage = ({ recipe, onBackButtonClick }) => {
   return (
     <Center flexDirection="column" align="left">
-      <Box width="60vw" m="2rem 0" boxShadow="dark-lg" rounded="md">
+      <Box
+        backgroundColor="#f4f0f0"
+        width="60vw"
+        m="2rem 0"
+        boxShadow="dark-lg"
+        rounded="md"
+      >
         <Flex justify="space-between" align="center" p="2rem 0">
           <Button
             m="0 1rem"
